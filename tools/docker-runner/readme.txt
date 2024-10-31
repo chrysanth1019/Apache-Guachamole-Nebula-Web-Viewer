@@ -1,0 +1,1 @@
+gcc runner.c -o docker-runner
