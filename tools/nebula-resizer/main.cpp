@@ -2,6 +2,7 @@
 #include <X11/Xutil.h>
 #include <iostream>
 #include <cstring>
+#include <unistd.h>  // For usleep function
 
 // Function to recursively search for a window by its name (title)
 Window findWindow(Display *display, Window root, const char *windowName) {
@@ -64,21 +65,24 @@ int main() {
     // Define the name of the window you want to find
     const char *targetWindowName = "Nebula 1.1.01-";  // Replace with your window's title
 
-    // Search for the window by its title
-    Window targetWindow = findWindow(display, root, targetWindowName);
-
-    if (targetWindow) {
-        int width = 0, height = 0;
-
-        // Get the window size
-        getWindowSize(display, targetWindow, width, height);
-
-        std::cout << "Before Window size - Width: " << width << ", Height: " << height << std::endl;
-
-        resizeWindow(display, targetWindow, 1920, 1080); 
-    } else {
-        std::cerr << "Window not found.\n";
+    Window targetWindow = 0;
+    
+    // Wait until the window is found (polling every 500 milliseconds)
+    std::cout << "Waiting for the window to appear...\n";
+    while ((targetWindow = findWindow(display, root, targetWindowName)) == 0) {
+        usleep(1000000);  // Wait for 500 milliseconds before trying again
     }
+
+    std::cout << "Window found!\n";
+    int width = 0, height = 0;
+
+    // Get the window size
+    getWindowSize(display, targetWindow, width, height);
+
+    std::cout << "Before Window size - Width: " << width << ", Height: " << height << std::endl;
+
+    // Resize the window to the desired dimensions
+    resizeWindow(display, targetWindow, 1920, 1080);
 
     // Close the display connection
     XCloseDisplay(display);
