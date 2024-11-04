@@ -14,6 +14,9 @@ int main(int argc, char *argv[]) {
     // Get the pedido parameter from the command-line arguments
     char pedidoParam[0x400];
     snprintf(pedidoParam, sizeof(pedidoParam), "MRB_URL=http://host.docker.internal:33088/download?pedido=%s", argv[1]);
+
+    char mrbFile[0x400];
+    snprintf(mrbFile, sizeof(mrbFile), "MRB_FILE=%s", argv[3]);
     // Define the Docker command and its arguments
     const char *dockerCommand = "docker";
     const char *args[] = {
@@ -21,8 +24,9 @@ int main(int argc, char *argv[]) {
         "run",
         "-d",  // Detached mode to run in the background
         "-e", "VNC_ADDR=host.docker.internal:5902",
-        "-e", "MRB_FILE=data.mrb",
+        "-e", mrbFile,
         "-e", pedidoParam,  // Use the pedido parameter dynamically
+        "-v", argv[2],
         "--add-host=host.docker.internal:host-gateway",
         "nebula",
         NULL  // Null-terminated array
