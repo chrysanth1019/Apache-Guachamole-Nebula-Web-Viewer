@@ -1,0 +1,12 @@
+[Unit]
+Description=swform Service
+After=network.target
+
+[Service]
+Type=forking
+ExecStart=/opt/sw-forms/SW_Forms
+Restart=on-failure
+User=root
+
+[Install]
+WantedBy=multi-user.target

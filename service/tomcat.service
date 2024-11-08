@@ -1,0 +1,12 @@
+[Unit]
+Description=Tomcat Service
+After=network.target
+
+[Service]
+Type=forking
+ExecStart=/opt/apache-tomcat-7.0.109/bin/startup.sh
+Restart=on-failure
+User=root
+
+[Install]
+WantedBy=multi-user.target

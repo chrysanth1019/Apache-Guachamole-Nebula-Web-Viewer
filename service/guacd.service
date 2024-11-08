@@ -1,0 +1,15 @@
+[Unit]
+Description=Guacd Service
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/sbin/guacd
+Restart=on-failure
+User=root
+RemainAfterExit=yes
+
+
+[Install]
+WantedBy=multi-user.target
+

@@ -102,3 +102,21 @@ mysql -u root -p
 ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'new_password';
 FLUSH PRIVILEGES;
 ```
+
+## Register Daemon
+
+```
+cp service/*.service /etc/systemd/system/
+
+sudo systemctl enable guacd.service
+sudo systemctl enable tomcat.service
+sudo systemctl enable swform.service
+```
+
+Check
+
+```
+sudo systemctl status guacd.service
+sudo systemctl status tomcat.service
+sudo systemctl status swform.service
+```
