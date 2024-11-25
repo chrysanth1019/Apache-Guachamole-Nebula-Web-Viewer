@@ -73,6 +73,15 @@ sudo cp guacamole.war /opt/tomcat7/webapps/
 /opt/tomcat7/bin/startup.sh
 ```
 
+## Install JDK
+```bash
+sudo apt install openjdk-8-jdk -y
+java -version
+nano ~/.bashrc
+export JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64"
+source ~/.bashrc
+```
+
 ## Configure Guacamole Server
 
 Default guacd config dir is **/etc/guacamole**. You copy all of **guacd-config** to **/ect/guacamole**. If you want to customize logo and app title, you can copy brand.jar to **/etc/guacamole/extensions**. And if you want to use MySQL server for guacd authentication, you should copy **mysql-connector-j-9.1.0.jar** to **/etc/guacamole/lib** and **guacamole-auth-jdbc-mysql-1.5.5.jar** to **/etc/guacamole/extensions**
