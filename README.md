@@ -22,7 +22,7 @@ sudo apt install -y \
     libavformat-dev libavutil-dev libswscale-dev \
     freerdp2-dev libpango1.0-dev libssh2-1-dev \
     libtelnet-dev libvncserver-dev libwebsockets-dev \
-    libpulse-dev libssl-dev  libvorbis-dev libwebp-dev \
+    libpulse-dev libssl-dev  libvorbis-dev libwebp-dev docker.io \
     autoreconf
 ```
 ref: https://guacamole.apache.org/doc/gug/installing-guacamole.html
