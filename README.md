@@ -25,6 +25,7 @@ sudo apt install -y \
     libpulse-dev libssl-dev  libvorbis-dev libwebp-dev \
     autoreconf
 ```
+ref: https://guacamole.apache.org/doc/gug/installing-guacamole.html
 
 #### Download Guacamole server source code
 
