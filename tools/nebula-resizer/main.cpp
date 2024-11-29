@@ -19,7 +19,7 @@ Window findWindow(Display *display, Window root, const char *windowName) {
             XFetchName(display, children[i], &window_title);
 
             // Check if the window name matches the target window name
-            if (window_title && std::strcmp(window_title, windowName) == 0) {
+            if (window_title && std::strstr(window_title, windowName) != 0) {
                 std::cout << "Window handle (ID) found: " << children[i] << std::endl;
                 return children[i];  // Return the window ID
             }
@@ -63,7 +63,7 @@ int main() {
     Window root = DefaultRootWindow(display);
 
     // Define the name of the window you want to find
-    const char *targetWindowName = "Nebula 1.1.01-";  // Replace with your window's title
+    const char *targetWindowName = "Nebula 1.";  // Replace with your window's title
 
     Window targetWindow = 0;
     

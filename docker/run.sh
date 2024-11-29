@@ -10,11 +10,6 @@ MRB_FILE="${MRB_FILE}"         # mrb file name
 # Navigate to the data directory
 
 Xvfb :99 -screen 0 1920x1080x24 &
-sleep 1
-echo "Sleep 5"
-sleep 1
-echo "Sleep 4"
-sleep 1
 echo "Sleep 3"
 sleep 1
 echo "Sleep 2"
@@ -22,7 +17,7 @@ sleep 1
 echo "Sleep 1"
 sleep 1
 
-cd data
+# cd data
 
 # Check if the mrb file exists, if not, download it
 if [ -e "$MRB_FILE" ]; then
@@ -33,14 +28,14 @@ else
 fi
 
 # Go back to the root directory
-cd ..
+# cd ..
 
 # Navigate to Nebula directory and run the application
-cd Nebula-1.1.01--linux-amd64
-./Nebula ../data/$MRB_FILE &
+cd Nebula
+./Nebula $MRB_FILE &
 cd ..
 
-sleep 10
+sleep 5
 
 echo "resizing..."
 ./resize

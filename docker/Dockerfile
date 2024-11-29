@@ -1,5 +1,7 @@
 # Use Ubuntu as the base image
-FROM linuxmintd/mint21.3-amd64
+# FROM linuxmintd/mint21.3-amd64
+# FROM ubuntu22.04
+FROM nvidia/cuda:11.8.0-base-ubuntu22.04
 
 # Set environment variables to avoid interactive prompts during installation
 ENV DEBIAN_FRONTEND=noninteractive
@@ -21,8 +23,9 @@ RUN apt-get update && apt-get install -y \
     curl
 
 RUN apt-get install -y libnss3
+RUN apt install libxcb-xinerama0
 
-RUN apt-get install -y libxcb-xinerama0 libxcb1 libxrender1 libxkbcommon-x11-0 libegl1-mesa
+# RUN apt-get install -y libxcb-xinerama0 libxcb1 libxrender1 libxkbcommon-x11-0 libegl1-mesa
 
 RUN apt-get install -y  libqt5widgets5 \
     libqt5core5a \

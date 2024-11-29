@@ -23,6 +23,8 @@ int main(int argc, char *argv[]) {
         "docker",
         "run",
         "-d",  // Detached mode to run in the background
+	"--runtime=nvidia",
+	"-e", "NVIDIA_VISIBLE_DEVICES=nvidia.com/gpu=all",
         "-e", "VNC_ADDR=host.docker.internal:5902",
         "-e", mrbFile,
         "-e", pedidoParam,  // Use the pedido parameter dynamically
